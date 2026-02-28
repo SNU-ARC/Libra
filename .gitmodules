@@ -1,0 +1,8 @@
+[submodule "Libra-Core"]
+	path = Libra-Core
+	url = https://github.com/SNU-ARC/Libra-Core.git
+	branch = iclr2026_libra
+[submodule "Libra-Internal"]
+	path = Libra-Internal
+	url = https://github.com/SNU-ARC/Libra-Internal.git
+	branch = iclr2026_libra
