@@ -1,6 +1,6 @@
 # Libra: Effective yet Efficient Load Balancing for Large-scale MoE Inference
 
-An SGLang-base framework that dynamically balances MoE token loads via speculative expert prefetching and optimal token assignment—minimizing stragglers and improving throughput.
+Libra is a system for MoE inference that achieves near-optimal expert load balancing with minimal overhead by predicting future expert activations and restructuring execution to overlap load-balancing costs with MoE computation. This repository provides an implementation of Libra atop SGLang.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -10,8 +10,9 @@ An SGLang-base framework that dynamically balances MoE token loads via speculati
 - [Usage](#usage)
 
 ## Overview
-
-Libra augments SGLang to provide dynamic MoE load balancing. It predicts expert demand and prefetches experts speculatively, shards token adaptively to meet load balancing, and thus improves throughput and lowers throughput fluctuation.
+Libra is a dynamic load balancing system for distributed MoE inference under expert parallelism, designed to mitigate stragglers caused by expert load imbalance.
+Libra uses a lookahead predictor to anticipate next-layer expert activations and plan locality-aware expert replication.
+By restructuring execution (Two-Stage Locality-Aware Execution), Libra overlaps sophisticated load-balancing—such as adaptive token sharding applied only to remote tokens and offloaded to the CPU—with MoE computation to minimize overhead.
 
 ## Features
 - **Two-Stage Locality-Aware Execution**: Splits MoE computation into two phases based on token locality.
